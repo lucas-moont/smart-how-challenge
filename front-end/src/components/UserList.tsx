@@ -2,6 +2,7 @@
 
 import { FC, useEffect, useState } from 'react'
 import UserCard from './UserCard'
+import useFilterFavUsers from '@/hooks/useFilterFavUsers'
 
 type User = {
   id: string
@@ -14,10 +15,17 @@ type User = {
 
 type Props = {
   search: string
+  showFavoritesOnly?: boolean
+  itemsPerPage: number
 }
 
-const UserList: FC<Props> = ({ search }) => {
+const UserList: FC<Props> = ({
+  search,
+  showFavoritesOnly = false,
+  itemsPerPage
+}) => {
   const [users, setUsers] = useState<User[]>([])
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     const mockUsers: User[] = [
@@ -44,19 +52,56 @@ const UserList: FC<Props> = ({ search }) => {
         country: 'Denmark',
         birthDate: '25/03/1991',
         picture: 'https://randomuser.me/api/portraits/men/78.jpg'
+      },
+      {
+        id: '4',
+        name: 'Carlos Lima',
+        email: 'carlos.lima@example.com',
+        country: 'Brazil',
+        birthDate: '12/10/1985',
+        picture: 'https://randomuser.me/api/portraits/men/79.jpg'
+      },
+      {
+        id: '5',
+        name: 'Jane Doe',
+        email: 'jane.doe@example.com',
+        country: 'USA',
+        birthDate: '01/01/1990',
+        picture: 'https://randomuser.me/api/portraits/women/80.jpg'
+      },
+      {
+        id: '6',
+        name: 'Lucas Rossi',
+        email: 'lucas.rossi@example.com',
+        country: 'Italy',
+        birthDate: '22/07/1988',
+        picture: 'https://randomuser.me/api/portraits/men/81.jpg'
       }
     ]
 
     setUsers(mockUsers)
   }, [])
 
-  // 👉 Aqui entra o filtro com base na search
-  const filteredUsers = users.filter((user) =>
+  const filteredBySearch = users.filter((user) =>
     user.name.toLowerCase().includes(search.toLowerCase())
   )
 
+  const filteredUsers = useFilterFavUsers(filteredBySearch, showFavoritesOnly)
+
+  // 🔢 Paginação
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const paginatedUsers = filteredUsers.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  )
+
+  // ⚠️ Resetar página se o filtro mudar
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [search, showFavoritesOnly, itemsPerPage])
+
   return (
-    <div className="border rounded-lg divide-y">
+    <div className="border overflow-hidden rounded-lg divide-y">
       {/* Cabeçalho da "tabela" */}
       <div className="hidden sm:flex text-gray-500 font-semibold px-2 py-2 border-b bg-gray-50">
         <div className="w-20">Photo</div>
@@ -68,13 +113,15 @@ const UserList: FC<Props> = ({ search }) => {
       </div>
 
       {/* Lista de usuários filtrados */}
-      {filteredUsers.map((user) => (
-        <UserCard key={user.id} user={user} />
-      ))}
+      {paginatedUsers.length === 0 ? (
+        <div className="text-center text-gray-500 py-4">No users found.</div>
+      ) : (
+        paginatedUsers.map((user) => <UserCard key={user.id} user={user} />)
+      )}
 
       {/* Info de contagem */}
       <div className="text-sm text-gray-500 px-2 py-2">
-        Showing {filteredUsers.length} of {users.length} users
+        Showing {paginatedUsers.length} of {filteredUsers.length} users
       </div>
     </div>
   )

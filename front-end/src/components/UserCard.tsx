@@ -51,9 +51,9 @@ const UserCard: FC<Props> = ({ user }) => {
     <div className="w-40 p-1 pt-0 pb-0 mb-2 md:mb-0">{user.birthDate}</div>
   
     {/* Favorito */}
-    <div className="w-20 p-1 pt-0 pb-0 text-center">
-      <img src="/icons/heart-placeholder.svg" alt="Favorite" className="w-5 h-5 inline-block" />
-    </div>
+    <button className="w-20 p-1 pt-0 pb-0 text-center">
+      <img src="/icons/heart-svgrepo-com.svg" alt="Favorite" className="w-5 h-5 inline-block" />
+    </button>
   </div>
   
 
