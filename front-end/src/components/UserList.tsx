@@ -4,15 +4,6 @@ import { FC, useEffect, useState } from 'react'
 import UserCard from './UserCard'
 import useFilterFavUsers from '@/hooks/useFilterFavUsers'
 
-type User = {
-  id: string
-  name: string
-  email: string
-  country: string
-  birthDate: string
-  picture: string
-}
-
 type Props = {
   search: string
   showFavoritesOnly?: boolean
