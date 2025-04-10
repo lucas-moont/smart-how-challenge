@@ -59,7 +59,9 @@ const PaginationNav: FC<Props> = ({
             key={idx}
             onClick={() => onPageChange(page)}
             className={`px-3 py-1 border rounded ${
-              currentPage === page ? 'bg-blue-500 text-white' : ''
+              currentPage === page
+                ? 'bg-blue-500 text-white'
+                : 'hover:bg-blue-500 hover:text-white'
             }`}
           >
             {page}

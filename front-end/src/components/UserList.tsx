@@ -51,7 +51,7 @@ const UserList: FC<Props> = ({
         <div className="flex-1">Email</div>
         <div className="w-32">Country</div>
         <div className="w-40">Birth Date</div>
-        <div className="w-20 text-center">Actions</div>
+        <div className="w-20 text-center">Favorite</div>
       </div>
 
       {paginatedUsers.length === 0 ? (
