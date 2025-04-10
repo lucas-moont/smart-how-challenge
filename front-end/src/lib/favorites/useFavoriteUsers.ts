@@ -5,29 +5,31 @@ import { useState, useEffect } from 'react'
 const STORAGE_KEY = 'favoriteUsers'
 
 export const useFavoriteUsers = () => {
-  const getInitialFavorites = (): User[] => {
-    if (typeof window === 'undefined') return []
+  const [favoriteUsers, setFavoriteUsers] = useState<User[]>([])
+  const [isReady, setIsReady] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
 
     try {
       const stored = localStorage.getItem(STORAGE_KEY)
       if (stored) {
         const parsed = JSON.parse(stored)
-        if (Array.isArray(parsed)) return parsed
+        if (Array.isArray(parsed)) {
+          setFavoriteUsers(parsed)
+        }
       }
     } catch (err) {
       console.error('Failed to parse favorite users from localStorage', err)
+    } finally {
+      setIsReady(true)
     }
-
-    return []
-  }
-
-  const [favoriteUsers, setFavoriteUsers] = useState<User[]>(getInitialFavorites)
+  }, [])
 
   useEffect(() => {
-    if (typeof window === 'undefined') return
+    if (typeof window === 'undefined' || !isReady) return
     localStorage.setItem(STORAGE_KEY, JSON.stringify(favoriteUsers))
-    console.log('Favorite users saved to localStorage:', favoriteUsers)
-  }, [favoriteUsers])
+  }, [favoriteUsers, isReady])
 
   const isFavorite = (userId: string) => {
     return favoriteUsers.some((user) => user.id === userId)
@@ -35,20 +37,12 @@ export const useFavoriteUsers = () => {
 
   const addFavorite = (user: User) => {
     if (!isFavorite(user.id)) {
-      setFavoriteUsers((prev) => {
-        const updatedFavorites = [...prev, user]
-        console.log('User added to favorites:', user, 'New favorites:', updatedFavorites)
-        return updatedFavorites
-      })
+      setFavoriteUsers((prev) => [...prev, user])
     }
   }
 
   const removeFavorite = (userId: string) => {
-    setFavoriteUsers((prev) => {
-      const updatedFavorites = prev.filter((user) => user.id !== userId)
-      console.log('User removed from favorites:', userId, 'New favorites:', updatedFavorites)
-      return updatedFavorites
-    })
+    setFavoriteUsers((prev) => prev.filter((user) => user.id !== userId))
   }
 
   const toggleFavorite = (user: User) => {
@@ -61,5 +55,6 @@ export const useFavoriteUsers = () => {
     removeFavorite,
     toggleFavorite,
     isFavorite,
+    isReady,
   }
 }

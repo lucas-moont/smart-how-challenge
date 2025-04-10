@@ -23,17 +23,13 @@ const UserList: FC<Props> = ({
   const { data: users = [], isLoading, isError } = useFetchUsers(50)
   const { favoriteUsers } = useFavoriteUsersContext()
 
+  // Decide qual base usar (todos os usuários da API ou apenas os favoritos)
+  const baseUsers = showFavoritesOnly ? favoriteUsers : users
+
   // Filtra por nome
-  const filteredBySearch = users.filter((user) =>
+  const filteredUsers = baseUsers.filter((user) =>
     user.name.toLowerCase().includes(search.toLowerCase())
   )
-
-  // Aplica filtro de favoritos (agora com base no context)
-  const filteredUsers = showFavoritesOnly
-    ? filteredBySearch.filter((user) =>
-        favoriteUsers.some((fav) => fav.id === user.id)
-      )
-    : filteredBySearch
 
   // Paginação
   const startIndex = (currentPage - 1) * itemsPerPage
@@ -43,7 +39,7 @@ const UserList: FC<Props> = ({
     onTotalCountChange(filteredUsers.length)
   }, [filteredUsers.length, onTotalCountChange])
 
-  if (isLoading) {
+  if (isLoading && !showFavoritesOnly) {
     return <div className="text-center py-4 text-gray-500">Loading users...</div>
   }
 
