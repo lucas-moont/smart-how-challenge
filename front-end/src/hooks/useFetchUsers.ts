@@ -20,7 +20,7 @@ export const useFetchUsers = (results: number = 10) => {
       const users = response.data.results as ApiUser[]
       return users.map(mapUser)
     },
-    staleTime: Infinity,               // ← cache nunca "expira"
-    refetchOnWindowFocus: false,       // não reconsulta ao voltar pra aba
+    staleTime: Infinity,          
+    refetchOnWindowFocus: false,      
   })
 }

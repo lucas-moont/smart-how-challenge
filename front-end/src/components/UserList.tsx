@@ -2,8 +2,8 @@
 
 import { FC, useEffect } from 'react'
 import UserCard from './UserCard'
-import useFilterFavUsers from '@/hooks/useFilterFavUsers'
 import { useFetchUsers } from '@/hooks/useFetchUsers'
+import { useFavoriteUsersContext } from '@/lib/favorites/FavoriteUsersContext'
 
 type Props = {
   search: string
@@ -21,13 +21,21 @@ const UserList: FC<Props> = ({
   onTotalCountChange,
 }) => {
   const { data: users = [], isLoading, isError } = useFetchUsers(50)
+  const { favoriteUsers } = useFavoriteUsersContext()
 
+  // Filtra por nome
   const filteredBySearch = users.filter((user) =>
     user.name.toLowerCase().includes(search.toLowerCase())
   )
 
-  const filteredUsers = useFilterFavUsers(filteredBySearch, showFavoritesOnly)
+  // Aplica filtro de favoritos (agora com base no context)
+  const filteredUsers = showFavoritesOnly
+    ? filteredBySearch.filter((user) =>
+        favoriteUsers.some((fav) => fav.id === user.id)
+      )
+    : filteredBySearch
 
+  // Paginação
   const startIndex = (currentPage - 1) * itemsPerPage
   const paginatedUsers = filteredUsers.slice(startIndex, startIndex + itemsPerPage)
 
