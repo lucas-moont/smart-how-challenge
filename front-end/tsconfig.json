@@ -16,14 +16,17 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "baseUrl": "src",
     "paths": {
       "@/*": [
         "./*"
       ]
     },
-    "types": ["jest", "node"],
+    "types": [
+      "jest",
+      "node"
+    ],
     "incremental": true,
     "plugins": [
       {
