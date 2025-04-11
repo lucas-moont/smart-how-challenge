@@ -1,20 +1,20 @@
-'use client'
+"use client";
 
-import { FC } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { useFavoriteUsersContext } from '@/lib/favorites/FavoriteUsersContext'
+import { FC } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useFavoriteUsersContext } from "@/lib/favorites/FavoriteUsersContext";
+import { saveSelectedUser } from "@/lib/profile/selectedUser";
 
 type Props = {
-  user: User
-}
+  user: User;
+};
 
 const UserCard: FC<Props> = ({ user }) => {
-  const { isFavorite, toggleFavorite } = useFavoriteUsersContext()
+  const { isFavorite, toggleFavorite } = useFavoriteUsersContext();
 
   return (
     <div className="flex flex-col sm:flex-row items-center sm:items-start sm:items-center border-b py-4 px-2 text-center sm:text-left">
-      {/* Foto */}
       <div className="w-full sm:w-20 flex justify-center sm:justify-start mb-2 sm:mb-0">
         <Image
           src={user.picture}
@@ -28,6 +28,7 @@ const UserCard: FC<Props> = ({ user }) => {
       <div className="w-full sm:flex-1 mb-2 sm:mb-0">
         <Link
           href={`/user/${user.id}`}
+          onClick={() => saveSelectedUser(user)}
           className="text-blue-600 font-medium hover:underline"
         >
           {user.name}
@@ -47,8 +48,8 @@ const UserCard: FC<Props> = ({ user }) => {
           <Image
             src={
               isFavorite(user.id)
-                ? '/icons/heart-filled.svg'
-                : '/icons/heart-svgrepo-com.svg'
+                ? "/icons/heart-filled.svg"
+                : "/icons/heart-svgrepo-com.svg"
             }
             alt="Favorite"
             width={20}
@@ -58,7 +59,7 @@ const UserCard: FC<Props> = ({ user }) => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default UserCard
+export default UserCard;
