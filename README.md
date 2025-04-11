@@ -86,4 +86,4 @@ O projeto segue uma estrutura **Modular / Feature-Based Architecture**, com insp
 
 ## 🌐 Deploy
 
-Em breve: **[https://user-directory.vercel.app](https://user-directory.vercel.app)** (placeholder)
+**[https://user-directory-challenge.vercel.app/](https://user-directory-challenge.vercel.app/)**
