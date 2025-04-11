@@ -6,11 +6,16 @@ import { randomUserApi } from '@/services/randomUserAPI'
 const mapUser = (user: ApiUser): User => ({
   id: user.login.uuid,
   name: `${user.name.first} ${user.name.last}`,
+  username: user.login.username,
   email: user.email,
-  country: user.location.country,
-  birthDate: new Date(user.dob.date).toLocaleDateString(),
+  phone: user.phone,
   picture: user.picture.large,
+  country: user.location.country,
+  state: user.location.state,
+  city: user.location.city,
+  birthDate: user.dob.date,
 })
+
 
 export const useFetchUsers = (results: number = 10) => {
   return useQuery<User[]>({
