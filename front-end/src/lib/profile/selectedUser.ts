@@ -1,4 +1,4 @@
-const SELECTED_USER_KEY = 'selectedUser'
+export const SELECTED_USER_KEY = 'selectedUser'
 
 export const saveSelectedUser = (user: User) => {
   localStorage.setItem(SELECTED_USER_KEY, JSON.stringify(user))

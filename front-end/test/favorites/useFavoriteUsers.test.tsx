@@ -4,11 +4,16 @@ import { useFavoriteUsers } from '@/lib/favorites/useFavoriteUsers'
 const mockUser: User = {
   id: '123',
   name: 'John Doe',
+  username: 'johndoe',
   email: 'john@example.com',
-  country: 'USA',
-  birthDate: '01/01/1990',
+  phone: '123-456-7890',
   picture: 'https://example.com/photo.jpg',
+  country: 'USA',
+  state: 'California',
+  city: 'Los Angeles',
+  birthDate: '1990-01-01T00:00:00.000Z',
 }
+
 
 describe('useFavoriteUsers', () => {
   beforeEach(() => {
