@@ -58,7 +58,7 @@ const UserProfileDetails = ({ user }: Props) => {
               aria-hidden="true"
             />
             <span>
-              {user.city}, {user.country}
+              {user.city}, {user.state}, {user.country}
             </span>
           </li>
           <li className="flex items-center gap-2">
