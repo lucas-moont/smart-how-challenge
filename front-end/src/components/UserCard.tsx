@@ -25,7 +25,6 @@ const UserCard: FC<Props> = ({ user }) => {
         />
       </div>
 
-      {/* Nome */}
       <div className="w-full sm:flex-1 mb-2 sm:mb-0">
         <Link
           href={`/user/${user.id}`}
@@ -35,18 +34,14 @@ const UserCard: FC<Props> = ({ user }) => {
         </Link>
       </div>
 
-      {/* Email */}
       <div className="w-full sm:flex-1 text-sm text-gray-600 mb-2 sm:mb-0">
         {user.email}
       </div>
 
-      {/* País */}
       <div className="w-full sm:w-32 mb-2 sm:mb-0">{user.country}</div>
 
-      {/* Data de nascimento */}
       <div className="w-full sm:w-40 mb-2 sm:mb-0">{user.birthDate}</div>
 
-      {/* Favoritar */}
       <div className="w-full sm:w-20 flex justify-center sm:justify-center">
         <button onClick={() => toggleFavorite(user)}>
           <Image
