@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { randomUserApi } from '@/services/randomUserAPI'
 
-const mapUser = (user: ApiUser): User => ({
+export const mapUser = (user: ApiUser): User => ({
   id: user.login.uuid,
   name: `${user.name.first} ${user.name.last}`,
   username: user.login.username,
