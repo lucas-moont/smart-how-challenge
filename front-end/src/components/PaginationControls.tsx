@@ -19,10 +19,16 @@ const PaginationControls: FC<Props> = ({
   const { t } = useTranslation()
 
   return (
-    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-4 mb-6 gap-4">
+    <section
+      className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-4 mb-6 gap-4"
+      aria-label={t('paginationNav')}
+    >
       {/* Dropdown */}
       <div className="flex items-center gap-2">
-        <label htmlFor="itemsPerPage" className="text-sm text-gray-700 font-medium">
+        <label
+          htmlFor="itemsPerPage"
+          className="text-sm text-gray-700 font-medium"
+        >
           {t('itemsPerPage')}
         </label>
         <select
@@ -30,7 +36,6 @@ const PaginationControls: FC<Props> = ({
           value={itemsPerPage}
           onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
           className="border border-gray-300 rounded px-2 py-1 text-sm"
-          aria-label={t('itemsPerPage')}
         >
           <option value={5}>5</option>
           <option value={10}>10</option>
@@ -38,15 +43,19 @@ const PaginationControls: FC<Props> = ({
       </div>
 
       {/* View Favorites */}
-      <button
-        onClick={onViewFavorites}
-        className="text-sm text-blue-600 hover:underline font-medium"
-        aria-pressed={isShowingFavorites}
-        aria-label={isShowingFavorites ? t('viewAllUsers') : t('viewFavorites')}
-      >
-        {isShowingFavorites ? t('viewAllUsers') : t('viewFavorites')}
-      </button>
-    </div>
+      <div>
+        <button
+          onClick={onViewFavorites}
+          className="text-sm text-blue-600 hover:underline font-medium"
+          aria-pressed={isShowingFavorites}
+          aria-label={
+            isShowingFavorites ? t('viewAllUsers') : t('viewFavorites')
+          }
+        >
+          {isShowingFavorites ? t('viewAllUsers') : t('viewFavorites')}
+        </button>
+      </div>
+    </section>
   )
 }
 

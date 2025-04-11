@@ -45,7 +45,6 @@
     "months": "há {count} meses",
     "years": "há {count} anos"
   },
-  "userDirectory": "Diretório de Usuários",
   "searchSection": "Buscar usuários",
   "controlsSection": "Controles de paginação e favoritos",
   "userListSection": "Lista de usuários",

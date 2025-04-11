@@ -31,8 +31,12 @@ const PaginationNav: FC<Props> = ({
   if (endPage < totalPages - 1) pages.push('...')
   if (totalPages > 1) pages.push(totalPages)
 
-  const buttonClass =
-    'px-2 py-1 border rounded disabled:opacity-50 hover:bg-blue-500 hover:text-white'
+  const baseBtn =
+    'px-2 py-1 border rounded focus:outline-none focus-visible:ring focus-visible:ring-blue-300'
+
+  const activeBtn = 'bg-blue-500 text-white ring-2 ring-blue-300'
+  const hoverableBtn = 'hover:bg-blue-500 hover:text-white'
+  const disabledBtn = 'opacity-50 cursor-not-allowed'
 
   return (
     <nav
@@ -42,7 +46,7 @@ const PaginationNav: FC<Props> = ({
       <button
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
-        className={buttonClass}
+        className={`${baseBtn} ${currentPage === 1 ? disabledBtn : hoverableBtn}`}
         aria-label={t('prevPage')}
       >
         {t('prev')}
@@ -53,10 +57,8 @@ const PaginationNav: FC<Props> = ({
           <button
             key={idx}
             onClick={() => onPageChange(page)}
-            className={`px-3 py-1 border rounded ${
-              currentPage === page
-                ? 'bg-blue-500 text-white'
-                : 'hover:bg-blue-500 hover:text-white'
+            className={`${baseBtn} ${
+              currentPage === page ? activeBtn : hoverableBtn
             }`}
             aria-label={`${t('goToPage')} ${page}`}
             aria-current={currentPage === page ? 'page' : undefined}
@@ -64,7 +66,11 @@ const PaginationNav: FC<Props> = ({
             {page}
           </button>
         ) : (
-          <span key={idx} className="px-2" aria-hidden="true">
+          <span
+            key={idx}
+            className="px-2 text-gray-500"
+            aria-hidden="true"
+          >
             …
           </span>
         )
@@ -73,7 +79,9 @@ const PaginationNav: FC<Props> = ({
       <button
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
-        className={buttonClass}
+        className={`${baseBtn} ${
+          currentPage === totalPages ? disabledBtn : hoverableBtn
+        }`}
         aria-label={t('nextPage')}
       >
         {t('next')}

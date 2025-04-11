@@ -18,11 +18,12 @@ const UserProfileDetails = ({ user }: Props) => {
   const { t } = useTranslation();
 
   const { value, unit } = getTimeSinceLastBirthday(user.birthDate);
+  const favorite = isFavorite(user.id);
 
   return (
     <section
       className="border rounded-lg p-6 flex flex-col sm:flex-row sm:items-start gap-4 relative"
-      aria-label={t("userProfileDetails")}
+      aria-labelledby="user-profile-name"
     >
       <div className="flex-shrink-0">
         <Image
@@ -35,11 +36,13 @@ const UserProfileDetails = ({ user }: Props) => {
       </div>
 
       <div className="flex-1">
-        <h2 className="text-2xl font-bold">{user.name}</h2>
+        <h2 id="user-profile-name" className="text-2xl font-bold">
+          {user.name}
+        </h2>
         <p className="text-gray-500 text-sm">{user.username}</p>
 
-        <ul className="mt-4 text-sm space-y-2">
-          <li className="flex items-center gap-2">
+        <ul className="mt-4 text-sm space-y-2" role="list">
+          <li className="flex items-center gap-2" role="listitem">
             <Image
               src="/icons/email.svg"
               alt=""
@@ -49,7 +52,7 @@ const UserProfileDetails = ({ user }: Props) => {
             />
             <span>{user.email}</span>
           </li>
-          <li className="flex items-center gap-2">
+          <li className="flex items-center gap-2" role="listitem">
             <Image
               src="/icons/location.svg"
               alt=""
@@ -61,7 +64,7 @@ const UserProfileDetails = ({ user }: Props) => {
               {user.city}, {user.state}, {user.country}
             </span>
           </li>
-          <li className="flex items-center gap-2">
+          <li className="flex items-center gap-2" role="listitem">
             <Image
               src="/icons/phone.svg"
               alt=""
@@ -71,7 +74,7 @@ const UserProfileDetails = ({ user }: Props) => {
             />
             <span>{user.phone}</span>
           </li>
-          <li className="flex items-start gap-2">
+          <li className="flex items-start gap-2" role="listitem">
             <div className="pt-1">
               <Image
                 src="/icons/calendar.svg"
@@ -97,14 +100,13 @@ const UserProfileDetails = ({ user }: Props) => {
       <div className="absolute top-4 right-4">
         <button
           onClick={() => toggleFavorite(user)}
-          aria-label={
-            isFavorite(user.id) ? t("removeFavorite") : t("addFavorite")
-          }
-          title={isFavorite(user.id) ? t("removeFavorite") : t("addFavorite")}
+          aria-label={favorite ? t("removeFavorite") : t("addFavorite")}
+          aria-pressed={favorite}
+          title={favorite ? t("removeFavorite") : t("addFavorite")}
         >
           <Image
             src={
-              isFavorite(user.id)
+              favorite
                 ? "/icons/heart-filled.svg"
                 : "/icons/heart-svgrepo-com.svg"
             }

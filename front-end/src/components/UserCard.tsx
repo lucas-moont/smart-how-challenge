@@ -17,12 +17,14 @@ const UserCard: FC<Props> = ({ user }) => {
   const params = useParams();
   const locale = params?.locale ?? "en";
 
+  const favorite = isFavorite(user.id);
+
   return (
     <div className="flex flex-col sm:flex-row items-center sm:items-start sm:items-center border-b py-4 px-2 text-center sm:text-left">
       <div className="w-full sm:w-20 flex justify-center sm:justify-start mb-2 sm:mb-0">
         <Image
           src={user.picture}
-          alt={user.name}
+          alt={`Profile picture of ${user.name}`}
           width={50}
           height={50}
           className="rounded-full"
@@ -34,6 +36,7 @@ const UserCard: FC<Props> = ({ user }) => {
           href={`/${locale}/user/${user.id}`}
           onClick={() => saveSelectedUser(user)}
           className="text-blue-600 font-medium hover:underline"
+          aria-label={`View profile of ${user.name}`}
         >
           {user.name}
         </Link>
@@ -45,17 +48,23 @@ const UserCard: FC<Props> = ({ user }) => {
 
       <div className="w-full sm:w-32 mb-2 sm:mb-0">{user.country}</div>
 
-      <div className="w-full sm:w-40 mb-2 sm:mb-0">{formatBirthDate(user.birthDate)}</div>
+      <div className="w-full sm:w-40 mb-2 sm:mb-0">
+        {formatBirthDate(user.birthDate)}
+      </div>
 
       <div className="w-full sm:w-20 flex justify-center sm:justify-center">
-        <button onClick={() => toggleFavorite(user)}>
+        <button
+          onClick={() => toggleFavorite(user)}
+          aria-label={favorite ? `Unfavorite ${user.name}` : `Favorite ${user.name}`}
+          aria-pressed={favorite}
+        >
           <Image
             src={
-              isFavorite(user.id)
+              favorite
                 ? "/icons/heart-filled.svg"
                 : "/icons/heart-svgrepo-com.svg"
             }
-            alt="Favorite"
+            alt={favorite ? "Favorited" : "Not favorited"}
             width={20}
             height={20}
             className="inline-block"
