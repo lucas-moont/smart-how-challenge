@@ -14,5 +14,12 @@
   "fullName": "Nome completo",
   "country": "País",
   "birthDate": "Data de nascimento",
-  "userDirectory": "Diretório de Usuários"
+  "userDirectory": "Diretório de Usuários",
+  "viewAllUsers": "Visualizar todos os usuários",
+  "viewAllUsers": "Ver todos os usuarios",
+  "loadingUsers": "Carregando usuários...",
+  "failedToFetch": "Falha ao buscar usuários.",
+  "noUsersFound": "Nenhum usuário encontrado.",
+  "showingCount": "Mostrando {count} de {total} usuários"
+  
 }

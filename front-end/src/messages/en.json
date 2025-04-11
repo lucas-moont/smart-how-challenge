@@ -14,5 +14,11 @@
   "fullName": "Full name",
   "country": "Country",
   "birthDate": "Birth date",
-  "userDirectory": "User Directory"
+  "userDirectory": "User Directory",
+  "viewAllUsers": "View All Users",
+  "loadingUsers": "Loading users...",
+  "failedToFetch": "Failed to fetch users.",
+  "noUsersFound": "No users found.",
+  "showingCount": "Showing {count} of {total} users"
+
 }
