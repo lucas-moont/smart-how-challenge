@@ -6,6 +6,7 @@ import UserSearchBar from '@/components/UserSearchBar'
 import PaginationControls from '@/components/PaginationControls'
 import PaginationNav from '@/components/PaginationNav'
 import { useTranslation } from '@/lib/hooks/useTranslation'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 export default function HomePage() {
   const { t } = useTranslation()
@@ -27,6 +28,7 @@ export default function HomePage() {
       aria-labelledby="page-title"
       id="main-content"
     >
+      <LanguageSwitcher />
       <h1 id="page-title" className="text-2xl font-bold mb-4">
         {t('userDirectory')}
       </h1>
