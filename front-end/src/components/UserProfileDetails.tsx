@@ -42,7 +42,7 @@ const UserProfileDetails = ({ user }: Props) => {
           <li className="flex items-center gap-2">
             <Image
               src="/icons/email.svg"
-              alt={t("emailIconAlt")}
+              alt=""
               width={16}
               height={16}
               aria-hidden="true"
@@ -52,7 +52,7 @@ const UserProfileDetails = ({ user }: Props) => {
           <li className="flex items-center gap-2">
             <Image
               src="/icons/location.svg"
-              alt={t("locationIconAlt")}
+              alt=""
               width={16}
               height={16}
               aria-hidden="true"
@@ -64,7 +64,7 @@ const UserProfileDetails = ({ user }: Props) => {
           <li className="flex items-center gap-2">
             <Image
               src="/icons/phone.svg"
-              alt={t("phoneIconAlt")}
+              alt=""
               width={16}
               height={16}
               aria-hidden="true"
@@ -75,7 +75,7 @@ const UserProfileDetails = ({ user }: Props) => {
             <div className="pt-1">
               <Image
                 src="/icons/calendar.svg"
-                alt={t("birthdayIconAlt")}
+                alt=""
                 width={16}
                 height={16}
                 aria-hidden="true"
@@ -87,8 +87,7 @@ const UserProfileDetails = ({ user }: Props) => {
                 {t("yearsOld")})
               </p>
               <p className="text-gray-500 text-xs">
-              {t(`timeAgo.${unit}s`, { count: value })}
-
+                {t(`timeAgo.${unit}s`, { count: value })}
               </p>
             </div>
           </li>
@@ -101,6 +100,7 @@ const UserProfileDetails = ({ user }: Props) => {
           aria-label={
             isFavorite(user.id) ? t("removeFavorite") : t("addFavorite")
           }
+          title={isFavorite(user.id) ? t("removeFavorite") : t("addFavorite")}
         >
           <Image
             src={

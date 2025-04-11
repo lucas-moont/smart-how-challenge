@@ -11,12 +11,14 @@ const UserProfilePage = () => {
   const [user, setUser] = useState<User | null>(null)
   const params = useParams()
   const { t } = useTranslation()
+  const locale = Array.isArray(params?.locale)
+    ? params.locale[0]
+    : params?.locale || 'en'
 
   useEffect(() => {
     const selected = getSelectedUser()
     const routeId = params?.id
 
-    // Verifica se o ID da rota é igual ao ID do usuário salvo
     if (selected && selected.id === routeId) {
       setUser(selected)
     } else {
@@ -26,28 +28,40 @@ const UserProfilePage = () => {
 
   if (!user) {
     return (
-      <div className="p-6">
-        <p className="text-gray-600">{t('userNotFound')}</p>
-        <Link
-          href="/"
-          className="text-blue-600 hover:underline mt-2 inline-block"
-        >
-          {t('backToUsers')}
-        </Link>
-      </div>
+      <main className="p-6" aria-labelledby="user-not-found-heading">
+        <h1 id="user-not-found-heading" className="text-lg font-semibold mb-2">
+          {t('userNotFound')}
+        </h1>
+        <p role="alert" className="text-gray-600 mb-4">
+          {t('userNotFound')}
+        </p>
+        <nav aria-label="Back to user list">
+          <Link
+            href={`/${locale}`}
+            className="text-blue-600 hover:underline mt-2 inline-block"
+          >
+            ← {t('backToUsers')}
+          </Link>
+        </nav>
+      </main>
     )
   }
 
   return (
-    <div className="p-6">
-      <Link
-        href="/"
-        className="text-blue-600 hover:underline text-sm mb-4 inline-block"
-      >
-        ← {t('backToUsers')}
-      </Link>
+    <main className="p-6" aria-labelledby="profile-heading">
+      <nav aria-label="Back to user list">
+        <Link
+          href={`/${locale}`}
+          className="text-blue-600 hover:underline text-sm mb-4 inline-block"
+        >
+          ← {t('backToUsers')}
+        </Link>
+      </nav>
+      <h1 id="profile-heading" className="sr-only">
+        {t('userProfileDetails')}
+      </h1>
       <UserProfileDetails user={user} />
-    </div>
+    </main>
   )
 }
 
