@@ -1,4 +1,4 @@
-import { mapUser } from "hooks/useFetchUsers"
+import { mapUser } from "../../src/hooks/useFetchUsers"
 
 describe('mapUser', () => {
   it('should correctly map an ApiUser to a User', () => {

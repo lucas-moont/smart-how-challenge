@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import UserList from 'components/UserList'
+import UserList from '../../components/UserList'
 import UserSearchBar from 'components/UserSearchBar'
-import PaginationControls from 'components/PaginationControls'
-import PaginationNav from 'components/PaginationNav'
-import { useTranslation } from 'lib/hooks/useTranslation'
-import LanguageSwitcher from 'components/LanguageSwitcher'
+import PaginationControls from '../../components/PaginationControls'
+import PaginationNav from '../../components/PaginationNav'
+import { useTranslation } from '../../lib/hooks/useTranslation'
+import LanguageSwitcher from '../../components/LanguageSwitcher'
 
 export default function HomePage() {
   const { t } = useTranslation()

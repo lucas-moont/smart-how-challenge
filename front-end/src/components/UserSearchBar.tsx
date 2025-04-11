@@ -2,7 +2,7 @@
 
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
-import { useTranslation } from 'lib/hooks/useTranslation'
+import { useTranslation } from '../lib/hooks/useTranslation'
 
 type Props = {
   defaultValue?: string

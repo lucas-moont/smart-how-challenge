@@ -3,9 +3,9 @@
 import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useFavoriteUsersContext } from "lib/favorites/FavoriteUsersContext";
-import { saveSelectedUser } from "lib/profile/selectedUser";
-import { formatBirthDate } from "lib/utils/dateUtils";
+import { useFavoriteUsersContext } from "../lib/favorites/FavoriteUsersContext";
+import { saveSelectedUser } from "../lib/profile/selectedUser";
+import { formatBirthDate } from "../lib/utils/dateUtils";
 import { useParams } from "next/navigation";
 
 type Props = {

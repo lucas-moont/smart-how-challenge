@@ -1,9 +1,9 @@
 'use client'
 
 import { FC, useEffect } from 'react'
-import UserCard from './UserCard'
-import { useFetchUsers } from 'hooks/useFetchUsers'
-import { useFavoriteUsersContext } from 'lib/favorites/FavoriteUsersContext'
+import UserCard from '../components/UserCard'
+import { useFetchUsers } from '../hooks/useFetchUsers'
+import { useFavoriteUsersContext } from '../lib/favorites/FavoriteUsersContext'
 import { useTranslation } from '../lib/hooks/useTranslation'
 
 type Props = {
