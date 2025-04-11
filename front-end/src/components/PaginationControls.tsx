@@ -6,12 +6,14 @@ type Props = {
   itemsPerPage: number
   onItemsPerPageChange: (value: number) => void
   onViewFavorites: () => void
+  isShowingFavorites: boolean // 👈 novo prop
 }
 
 const PaginationControls: FC<Props> = ({
   itemsPerPage,
   onItemsPerPageChange,
-  onViewFavorites
+  onViewFavorites,
+  isShowingFavorites,
 }) => {
   return (
     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-4 mb-6 gap-4">
@@ -36,7 +38,7 @@ const PaginationControls: FC<Props> = ({
         onClick={onViewFavorites}
         className="text-sm text-blue-600 hover:underline font-medium"
       >
-        View Favorites
+        {isShowingFavorites ? 'View All Users' : 'View Favorites'}
       </button>
     </div>
   )

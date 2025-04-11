@@ -33,6 +33,7 @@ export default function HomePage() {
           setItemsPerPage(value)
         }}
         onViewFavorites={handleViewFavorites}
+        isShowingFavorites={showFavoritesOnly} 
       />
 
       <UserList

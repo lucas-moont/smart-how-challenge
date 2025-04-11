@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useFetchUsers } from '@/hooks/useFetchUsers'
 
 describe('useFetchUsers', () => {
-  it('deve buscar e retornar usuários com sucesso', async () => {
+  it('it should search and return users', async () => {
     const queryClient = new QueryClient()
 
     const wrapper = ({ children }: { children: React.ReactNode }) => (
