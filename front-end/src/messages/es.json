@@ -1,0 +1,18 @@
+{
+  "backToUsers": "Volver a usuarios",
+  "userNotFound": "Usuario no encontrado.",
+  "email": "Correo electrónico",
+  "phone": "Teléfono",
+  "location": "Ubicación",
+  "birthday": "Cumpleaños",
+  "viewFavorites": "Ver favoritos",
+  "itemsPerPage": "Ítems por página",
+  "favorite": "Favorito",
+  "searchByName": "Buscar por nombre",
+  "search": "Buscar",
+  "photo": "Foto",
+  "fullName": "Nombre completo",
+  "country": "País",
+  "birthDate": "Fecha de nacimiento",
+  "userDirectory": "Directorio de Usuarios"
+}

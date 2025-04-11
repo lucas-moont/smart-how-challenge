@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import { ReactNode } from 'react'
 import ReactQueryProvider from '@/providers/ReactQueryProvider'
 import { FavoriteUsersProvider } from '@/lib/favorites/FavoriteUsersContext'
+import { TranslationProvider } from '@/lib/i18n/TranslationContext'
 
 export const metadata = {
   title: 'Random User App',
@@ -14,7 +15,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <ReactQueryProvider>
           <FavoriteUsersProvider>
-            {children}
+            <TranslationProvider>
+              {children}
+            </TranslationProvider>
           </FavoriteUsersProvider>
         </ReactQueryProvider>
       </body>
