@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useFavoriteUsersContext } from "@/lib/favorites/FavoriteUsersContext";
 import { saveSelectedUser } from "@/lib/profile/selectedUser";
+import { formatBirthDate } from "@/lib/utils/dateUtils";
 
 type Props = {
   user: User;
@@ -41,7 +42,7 @@ const UserCard: FC<Props> = ({ user }) => {
 
       <div className="w-full sm:w-32 mb-2 sm:mb-0">{user.country}</div>
 
-      <div className="w-full sm:w-40 mb-2 sm:mb-0">{user.birthDate}</div>
+      <div className="w-full sm:w-40 mb-2 sm:mb-0">{formatBirthDate(user.birthDate)}</div>
 
       <div className="w-full sm:w-20 flex justify-center sm:justify-center">
         <button onClick={() => toggleFavorite(user)}>

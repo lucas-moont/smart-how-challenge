@@ -16,3 +16,6 @@ export const getTimeSinceLastBirthday = (birthDate: string): string => {
   return dayjs().to(lastBirthday)
 }
 
+export const formatBirthDate = (birthDate: string): string => {
+  return dayjs(birthDate).format('DD/MM/YY')
+}

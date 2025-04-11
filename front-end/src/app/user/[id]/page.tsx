@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { getSelectedUser } from '@/lib/profile/selectedUser'
-import { getTimeSinceLastBirthday } from '@utils/dateUtils'
+import { formatBirthDate, getTimeSinceLastBirthday } from '@utils/dateUtils'
 import { getAge } from '@utils/dateUtils'
 import { useFavoriteUsersContext } from '@/lib/favorites/FavoriteUsersContext'
 
@@ -67,7 +67,7 @@ const UserProfilePage = () => {
               <Image src="/icons/calendar.svg" alt="Birthday" width={16} height={16} />
               <div>
                 <p>
-                  {user.birthDate} ({getAge(user.birthDate)} years old)
+                  {formatBirthDate(user.birthDate)} ({getAge(user.birthDate)} years old)
                 </p>
                 <p className="text-gray-500 text-xs">
                   {getTimeSinceLastBirthday(user.birthDate)}
