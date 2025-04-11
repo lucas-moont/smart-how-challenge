@@ -4,15 +4,22 @@ import UserProfilePage from '@/app/[locale]/user/[id]/page'
 import { FavoriteUsersProvider } from '@/lib/favorites/FavoriteUsersContext'
 import { SELECTED_USER_KEY } from '@/lib/profile/selectedUser'
 
+
+jest.mock('next/navigation', () => ({
+  ...jest.requireActual('next/navigation'),
+  usePathname: () => '/en/user/123',
+  useParams: () => ({ id: '123' }),
+}))
+
 // Mock de usuário simples
 const mockUser = {
   id: '123',
-  name: 'João Silva',
-  username: 'joaosilva',
-  email: 'joao@example.com',
-  city: 'São Paulo',
-  country: 'Brasil',
-  phone: '123456789',
+  name: 'John Smith',
+  username: 'johnsmith',
+  email: 'john@example.com',
+  city: 'New York',
+  country: 'USA',
+  phone: '987654321',
   picture: '/user.jpg',
   birthDate: '1990-04-11T00:00:00.000Z',
 }
@@ -32,18 +39,18 @@ const renderPage = () =>
     </FavoriteUsersProvider>
   )
 
-describe('UserProfilePage', () => {
+describe('UserProfilePage (/en)', () => {
   it('should show name and e-mail from user', () => {
     renderPage()
 
-    expect(screen.getByText('João Silva')).toBeInTheDocument()
-    expect(screen.getByText('joao@example.com')).toBeInTheDocument()
+    expect(screen.getByText('John Smith')).toBeInTheDocument()
+    expect(screen.getByText('john@example.com')).toBeInTheDocument()
   })
 
   it('should tell that no user was found', () => {
     localStorage.removeItem(SELECTED_USER_KEY)
     renderPage()
 
-    expect(screen.getByText('Usuário não encontrado.')).toBeInTheDocument()
+    expect(screen.getAllByText('User not found').length).toBeGreaterThan(0)
   })
 })
