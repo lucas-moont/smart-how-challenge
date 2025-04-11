@@ -21,32 +21,53 @@ export default function HomePage() {
   }
 
   return (
-    <main className="max-w-5xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">{t('userDirectory')}</h1>
+    <main
+      className="max-w-5xl mx-auto p-4"
+      role="main"
+      aria-labelledby="page-title"
+      id="main-content"
+    >
+      <h1 id="page-title" className="text-2xl font-bold mb-4">
+        {t('userDirectory')}
+      </h1>
 
-      <UserSearchBar defaultValue={search} onSubmit={(value) => setSearch(value)} />
+      <section aria-label={t('searchSection')}>
+        <UserSearchBar
+          defaultValue={search}
+          onSubmit={(value) => setSearch(value)}
+        />
+      </section>
 
-      <PaginationControls
-        itemsPerPage={itemsPerPage}
-        onItemsPerPageChange={setItemsPerPage}
-        onViewFavorites={handleViewFavorites}
-        isShowingFavorites={showFavoritesOnly}
-      />
+      <section aria-label={t('controlsSection')} className="mt-4">
+        <PaginationControls
+          itemsPerPage={itemsPerPage}
+          onItemsPerPageChange={setItemsPerPage}
+          onViewFavorites={handleViewFavorites}
+          isShowingFavorites={showFavoritesOnly}
+        />
+      </section>
 
-      <UserList
-        search={search}
-        showFavoritesOnly={showFavoritesOnly}
-        itemsPerPage={itemsPerPage}
-        currentPage={currentPage}
-        onTotalCountChange={setTotalItems}
-      />
+      <section aria-label={t('userListSection')} className="mt-6">
+        <UserList
+          search={search}
+          showFavoritesOnly={showFavoritesOnly}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          onTotalCountChange={setTotalItems}
+        />
+      </section>
 
-      <PaginationNav
-        currentPage={currentPage}
-        totalItems={totalItems}
-        itemsPerPage={itemsPerPage}
-        onPageChange={setCurrentPage}
-      />
+      <nav
+        aria-label={t('paginationNavigation')}
+        className="mt-6"
+      >
+        <PaginationNav
+          currentPage={currentPage}
+          totalItems={totalItems}
+          itemsPerPage={itemsPerPage}
+          onPageChange={setCurrentPage}
+        />
+      </nav>
     </main>
   )
 }

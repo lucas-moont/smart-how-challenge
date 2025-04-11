@@ -29,13 +29,13 @@ const UserProfilePage = () => {
   if (!user) {
     return (
       <main className="p-6" aria-labelledby="user-not-found-heading">
-        <h1 id="user-not-found-heading" className="text-lg font-semibold mb-2">
+        <h1 id="user-not-found-heading" className="text-xl font-semibold mb-2">
           {t('userNotFound')}
         </h1>
         <p role="alert" className="text-gray-600 mb-4">
           {t('userNotFound')}
         </p>
-        <nav aria-label="Back to user list">
+        <nav aria-label={t('backToUsers')}>
           <Link
             href={`/${locale}`}
             className="text-blue-600 hover:underline mt-2 inline-block"
@@ -49,7 +49,7 @@ const UserProfilePage = () => {
 
   return (
     <main className="p-6" aria-labelledby="profile-heading">
-      <nav aria-label="Back to user list">
+      <nav aria-label={t('backToUsers')}>
         <Link
           href={`/${locale}`}
           className="text-blue-600 hover:underline text-sm mb-4 inline-block"

@@ -44,5 +44,9 @@
     "days": "{count} days ago",
     "months": "{count} months ago",
     "years": "{count} years ago"
-  }
+  },
+  "searchSection": "Search users",
+  "controlsSection": "Pagination and favorites controls",
+  "userListSection": "List of users",
+  "paginationNavigation": "Pagination navigation"
 }

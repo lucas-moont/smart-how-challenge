@@ -11,12 +11,17 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" dir="ltr">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body>
         <ReactQueryProvider>
           <FavoriteUsersProvider>
             <TranslationProvider>
-              {children}
+              <main role="main" id="main-content" tabIndex={-1}>
+                {children}
+              </main>
             </TranslationProvider>
           </FavoriteUsersProvider>
         </ReactQueryProvider>

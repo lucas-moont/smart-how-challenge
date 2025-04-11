@@ -44,6 +44,11 @@
     "days": "hace {count} días",
     "months": "hace {count} meses",
     "years": "hace {count} años"
-  }
+  },
+  "userDirectory": "Directorio de Usuarios",
+  "searchSection": "Buscar usuarios",
+  "controlsSection": "Controles de paginación y favoritos",
+  "userListSection": "Lista de usuarios",
+  "paginationNavigation": "Navegación de paginación"
   
 }

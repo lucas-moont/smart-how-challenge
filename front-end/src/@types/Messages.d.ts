@@ -45,4 +45,8 @@ type Messages = {
     months: string;
     years: string;
   };
+  searchSection: string;
+  controlsSection: string;
+  userListSection: string;
+  paginationNavigation: string;
 };
