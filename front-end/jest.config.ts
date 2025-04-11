@@ -1,23 +1,12 @@
-// jest.config.ts
-import type { Config } from 'jest'
-
-const config: Config = {
-  preset: 'ts-jest',
+export default {
   testEnvironment: 'jsdom',
-  testMatch: ['**/test/**/*.test.ts?(x)'],
-  setupFilesAfterEnv: ['@testing-library/jest-dom'],
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest'
+    '^.+\\.(ts|tsx)$': 'babel-jest',
   },
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1'
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.json',
-      useESM: false
-    }
-  }
+  transformIgnorePatterns: ['/node_modules/(?!(axios)/)'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom'],
 }
-
-export default config
