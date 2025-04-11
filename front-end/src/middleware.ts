@@ -1,4 +1,4 @@
-export { localeMiddleware as middleware } from '@/middlewares/i18nRedirect'
+export { localeMiddleware as middleware } from './middlewares/i18nRedirect'
 
 export const config = {
   matcher: [

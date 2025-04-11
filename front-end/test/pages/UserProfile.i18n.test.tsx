@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import UserProfilePage from '@/app/[locale]/user/[id]/page'
-import { FavoriteUsersProvider } from '@/lib/favorites/FavoriteUsersContext'
-import { SELECTED_USER_KEY } from '@/lib/profile/selectedUser'
+import UserProfilePage from 'app/[locale]/user/[id]/page'
+import { FavoriteUsersProvider } from 'lib/favorites/FavoriteUsersContext'
+import { SELECTED_USER_KEY } from 'lib/profile/selectedUser'
 
 // Usuário de teste
 const mockUser = {

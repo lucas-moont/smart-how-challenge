@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react'
-import { useFavoriteUsers } from '@/lib/favorites/useFavoriteUsers'
+import { useFavoriteUsers } from 'lib/favorites/useFavoriteUsers'
 
 const mockUser: User = {
   id: '123',

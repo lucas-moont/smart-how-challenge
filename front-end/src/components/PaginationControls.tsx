@@ -1,7 +1,7 @@
 'use client'
 
 import { FC } from 'react'
-import { useTranslation } from '@/lib/hooks/useTranslation'
+import { useTranslation } from 'lib/hooks/useTranslation'
 
 type Props = {
   itemsPerPage: number

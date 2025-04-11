@@ -1,6 +1,6 @@
 import { renderHook, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { useFetchUsers } from '@/hooks/useFetchUsers'
+import { useFetchUsers } from 'hooks/useFetchUsers'
 
 describe('useFetchUsers', () => {
   it('it should search and return users', async () => {

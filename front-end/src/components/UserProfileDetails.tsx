@@ -5,9 +5,9 @@ import {
   formatBirthDate,
   getTimeSinceLastBirthday,
   getAge,
-} from "@/lib/utils/dateUtils";
-import { useFavoriteUsersContext } from "@/lib/favorites/FavoriteUsersContext";
-import { useTranslation } from "@/lib/hooks/useTranslation";
+} from "../lib/utils/dateUtils";
+import { useFavoriteUsersContext } from "../lib/favorites/FavoriteUsersContext";
+import { useTranslation } from "lib/hooks/useTranslation";
 
 type Props = {
   user: User;

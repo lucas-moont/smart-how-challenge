@@ -2,10 +2,10 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { getSelectedUser } from '@/lib/profile/selectedUser'
-import UserProfileDetails from '@/components/UserProfileDetails'
+import { getSelectedUser } from 'lib/profile/selectedUser'
+import UserProfileDetails from 'components/UserProfileDetails'
 import { useParams } from 'next/navigation'
-import { useTranslation } from '@/lib/hooks/useTranslation'
+import { useTranslation } from 'lib/hooks/useTranslation'
 
 const UserProfilePage = () => {
   const [user, setUser] = useState<User | null>(null)

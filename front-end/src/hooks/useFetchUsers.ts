@@ -1,7 +1,7 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { randomUserApi } from '@/services/randomUserAPI'
+import { randomUserApi } from 'services/randomUserAPI'
 
 export const mapUser = (user: ApiUser): User => ({
   id: user.login.uuid,
