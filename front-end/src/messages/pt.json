@@ -1,11 +1,11 @@
 {
-  "backToUsers": "Voltar para usuários",
-  "userNotFound": "Usuário não encontrado.",
+  "backToUsers": "Voltar para lista de usuários",
+  "userNotFound": "Usuário não encontrado",
   "email": "Email",
   "phone": "Telefone",
   "location": "Localização",
   "birthday": "Aniversário",
-  "viewFavorites": "Ver favoritos",
+  "viewFavorites": "Ver Favoritos",
   "itemsPerPage": "Itens por página",
   "favorite": "Favorito",
   "searchByName": "Buscar por nome",
@@ -14,12 +14,16 @@
   "fullName": "Nome completo",
   "country": "País",
   "birthDate": "Data de nascimento",
-  "userDirectory": "Diretório de Usuários",
-  "viewAllUsers": "Visualizar todos os usuários",
-  "viewAllUsers": "Ver todos os usuarios",
+  "userDirectory": "Diretório de usuários",
   "loadingUsers": "Carregando usuários...",
-  "failedToFetch": "Falha ao buscar usuários.",
+  "failedToFetch": "Falha ao carregar usuários.",
   "noUsersFound": "Nenhum usuário encontrado.",
-  "showingCount": "Mostrando {count} de {total} usuários"
-  
+  "showingCount": "Mostrando {count} de {total} usuários",
+  "prev": "Anterior",
+  "next": "Próximo",
+  "prevPage": "Página anterior",
+  "nextPage": "Próxima página",
+  "paginationNav": "Navegação da paginação",
+  "goToPage": "Ir para a página",
+  "viewAllUsers": "Ver todos os usuários"
 }

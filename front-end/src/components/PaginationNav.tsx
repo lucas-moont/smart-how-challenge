@@ -1,6 +1,7 @@
 'use client'
 
 import { FC } from 'react'
+import { useTranslation } from '@/lib/hooks/useTranslation'
 
 type Props = {
   currentPage: number
@@ -15,42 +16,36 @@ const PaginationNav: FC<Props> = ({
   itemsPerPage,
   onPageChange,
 }) => {
+  const { t } = useTranslation()
   const totalPages = Math.ceil(totalItems / itemsPerPage)
 
   if (totalPages <= 1) return null
 
-  const maxButtonsToShow = 3
   const pages: (number | string)[] = []
-
   const startPage = Math.max(2, currentPage - 1)
   const endPage = Math.min(totalPages - 1, currentPage + 1)
 
   pages.push(1)
+  if (startPage > 2) pages.push('...')
+  for (let i = startPage; i <= endPage; i++) pages.push(i)
+  if (endPage < totalPages - 1) pages.push('...')
+  if (totalPages > 1) pages.push(totalPages)
 
-  if (startPage > 2) {
-    pages.push('...')
-  }
-
-  for (let i = startPage; i <= endPage; i++) {
-    pages.push(i)
-  }
-
-  if (endPage < totalPages - 1) {
-    pages.push('...')
-  }
-
-  if (totalPages > 1) {
-    pages.push(totalPages)
-  }
+  const buttonClass =
+    'px-2 py-1 border rounded disabled:opacity-50 hover:bg-blue-500 hover:text-white'
 
   return (
-    <div className="flex justify-center items-center gap-2 py-4 text-sm text-gray-700">
+    <nav
+      className="flex justify-center items-center gap-2 py-4 text-sm text-gray-700"
+      aria-label={t('paginationNav')}
+    >
       <button
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
-        className="px-2 py-1 border rounded disabled:opacity-50"
+        className={buttonClass}
+        aria-label={t('prevPage')}
       >
-        Prev
+        {t('prev')}
       </button>
 
       {pages.map((page, idx) =>
@@ -63,12 +58,14 @@ const PaginationNav: FC<Props> = ({
                 ? 'bg-blue-500 text-white'
                 : 'hover:bg-blue-500 hover:text-white'
             }`}
+            aria-label={`${t('goToPage')} ${page}`}
+            aria-current={currentPage === page ? 'page' : undefined}
           >
             {page}
           </button>
         ) : (
-          <span key={idx} className="px-2">
-            ...
+          <span key={idx} className="px-2" aria-hidden="true">
+            …
           </span>
         )
       )}
@@ -76,11 +73,12 @@ const PaginationNav: FC<Props> = ({
       <button
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
-        className="px-2 py-1 border rounded disabled:opacity-50"
+        className={buttonClass}
+        aria-label={t('nextPage')}
       >
-        Next
+        {t('next')}
       </button>
-    </div>
+    </nav>
   )
 }
 

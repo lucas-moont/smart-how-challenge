@@ -19,4 +19,11 @@ type Messages = {
   failedToFetch: string
   noUsersFound: string
   showingCount: string
+  prev: string
+  next: string
+  prevPage: string
+  nextPage: string
+  paginationNav: string
+  goToPage: string
+  viewAllUsers: string
 }
