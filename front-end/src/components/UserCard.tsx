@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useFavoriteUsersContext } from "@/lib/favorites/FavoriteUsersContext";
 import { saveSelectedUser } from "@/lib/profile/selectedUser";
 import { formatBirthDate } from "@/lib/utils/dateUtils";
+import { useParams } from "next/navigation";
 
 type Props = {
   user: User;
@@ -13,6 +14,8 @@ type Props = {
 
 const UserCard: FC<Props> = ({ user }) => {
   const { isFavorite, toggleFavorite } = useFavoriteUsersContext();
+  const params = useParams();
+  const locale = params?.locale ?? "en";
 
   return (
     <div className="flex flex-col sm:flex-row items-center sm:items-start sm:items-center border-b py-4 px-2 text-center sm:text-left">
@@ -28,7 +31,7 @@ const UserCard: FC<Props> = ({ user }) => {
 
       <div className="w-full sm:flex-1 mb-2 sm:mb-0">
         <Link
-          href={`/user/${user.id}`}
+          href={`/${locale}/user/${user.id}`}
           onClick={() => saveSelectedUser(user)}
           className="text-blue-600 font-medium hover:underline"
         >

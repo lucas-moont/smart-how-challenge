@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import UserProfilePage from '@/app/user/[id]/page'
+import UserProfilePage from '@/app/[locale]/user/[id]/page'
 import { FavoriteUsersProvider } from '@/lib/favorites/FavoriteUsersContext'
 import { SELECTED_USER_KEY } from '@/lib/profile/selectedUser'
 

@@ -25,5 +25,24 @@
   "nextPage": "Next page",
   "paginationNav": "Pagination Navigation",
   "goToPage": "Go to page",
-  "viewAllUsers": "View all users"
+  "viewAllUsers": "View all users",
+  "userProfileDetails": "User profile details",
+  "userPictureAlt": "Picture of {{name}}",
+  "emailIconAlt": "Email icon",
+  "locationIconAlt": "Location icon",
+  "phoneIconAlt": "Phone icon",
+  "birthdayIconAlt": "Birthday icon",
+  "yearsOld": "years old",
+  "addFavorite": "Add to favorites",
+  "removeFavorite": "Remove from favorites",
+  "favoriteIconAlt": "Favorite icon",
+  "timeAgo": {
+    "justNow": "just now",
+    "seconds": "{count} seconds ago",
+    "minutes": "{count} minutes ago",
+    "hours": "{count} hours ago",
+    "days": "{count} days ago",
+    "months": "{count} months ago",
+    "years": "{count} years ago"
+  }
 }

@@ -1,21 +1,28 @@
-import dayjs from './dayjsConfig'
+import dayjs from "./dayjsConfig";
 
 export const getAge = (birthDate: string): number => {
-  return dayjs().diff(birthDate, 'year')
-}
+  return dayjs().diff(birthDate, "year");
+};
 
-export const getTimeSinceLastBirthday = (birthDate: string): string => {
-  const birth = dayjs(birthDate)
-  const now = dayjs()
+export const getTimeSinceLastBirthday = (
+  birthDate: string
+): { value: number; unit: "day" | "month" } => {
+  const birth = dayjs(birthDate);
+  const now = dayjs();
 
-  const nextBirthday = birth.set('year', now.year())
+  const nextBirthday = birth.set("year", now.year());
   const lastBirthday = nextBirthday.isAfter(now)
-    ? nextBirthday.subtract(1, 'year')
-    : nextBirthday
+    ? nextBirthday.subtract(1, "year")
+    : nextBirthday;
 
-  return dayjs().to(lastBirthday)
-}
+  const daysDiff = now.diff(lastBirthday, "day");
+  const monthsDiff = now.diff(lastBirthday, "month");
+
+  return monthsDiff >= 1
+    ? { value: monthsDiff, unit: "month" }
+    : { value: daysDiff, unit: "day" };
+};
 
 export const formatBirthDate = (birthDate: string): string => {
-  return dayjs(birthDate).format('DD/MM/YY')
-}
+  return dayjs(birthDate).format("DD/MM/YY");
+};
